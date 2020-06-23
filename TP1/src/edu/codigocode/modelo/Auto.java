@@ -5,13 +5,12 @@ public class Auto {
 	private String marca;
 	private String modelo;
 	private Persona persona;
-	private int velocMax;
+	private boolean disponible = false;
 	
-	public Auto(String marca, String modelo,int velocMax, Persona persona){
+	public Auto(String marca, String modelo,Persona persona){
 		this.marca = marca;
 		this.modelo = modelo;
 		this.persona = persona;
-		this.velocMax = velocMax; 
 	}
 
 	public String getMarca() {
@@ -22,6 +21,11 @@ public class Auto {
 	}
 	public Persona getPersona(){
 		return persona;
+	}
+	
+	public boolean disponible() {
+		return this.disponible; 
+		
 	}
 	
 	public boolean arrancar(){
@@ -42,23 +46,12 @@ public class Auto {
 		
 	}
 	
-	public boolean personasEntrenEnAutos (Persona[] p, Auto[] a) {
-		int cantPersonas = p.length; 
-		int cantAutos = a.length; 
-		if (cantPersonas == cantAutos) {
-			return true; 
-		}else 
-			return false; 	
+	public boolean entrarEnAuto(){
+		if (!disponible()) {
+			return this.disponible = false; 
+		} else {
+			return disponible(); 
+		}
 	}
-	
-	public boolean disponible(Auto auto) {
-		if(auto.persona == null ) {
-			return true;  
-		}else 
-			return false; 
-		
-	}
-	
-
 }
 	
